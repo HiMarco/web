@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+</head>
+<style type="text/css">
+    li{list-style: none;}
+    .row{
+        /*width: 1298px;
+        
+        border: 1px solid;
+        box-shadow:2px 2px 2px #000;*/
+        height: 140px;
+        overflow: hidden;
+        line-height: 24px;
+    }
+    .box{
+        position: relative;
+    }
+    .box1,.box2{
+        height: 140px;
+        position: absolute;
+    }
+   
+    
+</style>
+<body>
+    <div class="row">
+        <div class="box" id="box">
+            <div class="box1" id="box1">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </div>
+            <div class="box2" id="box2">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    window.onload = function(){
+        var _box1 = document.getElementById("box1");
+        var _box2 = document.getElementById("box2");
+        var y = 0;
+        var fun = function(){
+            _box1.style.top = y + 'px';
+            _box2.style.top = (y +140) + 'px';
+            y--;
+            if((y +140) == 0){
+                y = 0;
+            }
+        }
+        var time = setInterval(fun,10);
+        var _box = document.getElementById("box");
+        _box.onmouseover=function(){
+            clearInterval(time);
+        }
+        _box.onmouseout=function(){
+            time = setInterval(fun,10);
+        }
+    }
+</script>
+</html>
